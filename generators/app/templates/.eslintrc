@@ -1,0 +1,23 @@
+{
+  "env": {
+    "node": true
+  },
+  "globals": {
+    "require": true,
+    "describe": true,
+    "context": true,
+    "it": true,
+    "before": true,
+    "after": true
+  },
+  "rules": {
+    "quotes": [2, "single"],
+    "strict": false,
+    "no-multi-spaces": false,
+    "no-underscore-dangle": false,
+    "no-mixed-requires": false
+  },
+  "ecmaFeatures": {
+    "blockBindings": true
+  }
+}

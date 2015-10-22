@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "serve": "NODE_ENV=development ./node_modules/.bin/nodemon -V -w src/ index.js",
+    "test": "NODE_ENV=test ./node_modules/.bin/_mocha --colors --compilers js:babel/register src/test",
+    "test-watch": "NODE_ENV=test ./node_modules/.bin/nodemon --watch src --watch test -x \"./node_modules/.bin/_mocha --colors --compilers js:babel/register 'test/**/*.js'\""
+  },
+  "author": "Rakuten Marketing",
+  "dependencies": {
+    "babel": "^5.8.23",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "knex": "^0.8.6",
+    "morgan": "^1.6.1",
+    "pg": "^4.4.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.3",
+    "chai": "^3.3.0",
+    "chai-as-promised": "^5.1.0",
+    "knex-cleaner": "^1.1.1",
+    "mocha": "^2.3.3",
+    "nodemon": "^1.7.1"
+  },
+  "engines": {
+    "node": "4.2.1"
+  }
+}

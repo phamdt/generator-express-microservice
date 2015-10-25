@@ -7,5 +7,5 @@
 require('babel/register');
 
 
-// keep app requirement last
-require('./src/app');
+// keep app index requirement last
+require('./app/index');

@@ -4,14 +4,12 @@ import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import config from '../config.json';
-import Knex from 'knex';
 
 const env = process.env.NODE_ENV || 'development';
 const app = express();
 
-Knex.knex = Knex(config.database[env]);
 
-app.set('port', (config.port || 3000));
+app.set('port', (config.port || 9000));
 app.set('hostname', (config.hostname || 'localhost'));
 
 if (env === 'development' || env === 'qa') {
@@ -29,5 +27,4 @@ app.listen(app.get('port'), app.get('hostname'), () => {
   console.log('Server running at http://' + app.get('hostname') + ':' + app.get('port'));
 });
 
-export.app = app;
-export.db = Knex;
+exports.app = app;

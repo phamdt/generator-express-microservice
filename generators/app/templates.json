@@ -5,12 +5,27 @@
   "Vagrantfile",
   "config.json",
   ".eslintrc",
+  "editorconfig",
+  ".dockerignore",
+  "Dockerfile",
+  "docker-compose.yml",
+  "knexfile.js",
 
   "_index.js",
 
-  "src/app.js",
-  "src/middleware",
-  "src/controller.js",
-  "src/model.js",
-  "src/routes.js"
+  "app/index.js",
+  "app/middleware/",
+  "app/controller.js",
+  "app/model.js",
+  "app/routes.js",
+
+  "migrations/",
+
+  "garden/garden.js",
+  "garden/container.js",
+  "garden/features/crud.feature",
+  "garden/features/definitions/crud.js",
+  "garden/support/world.js",
+  "garden/support/context.js",
+  "garden/support/hooks.js"
 ]

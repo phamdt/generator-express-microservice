@@ -1,8 +1,10 @@
 'use strict';
 
-import config from '../config.json';
-var db = require('./app').db;
+import Knex from 'knex';
+import dbConfig from '../knexfile';
 
+const env = process.env.NODE_ENV || 'development';
+const db = Knex.knex = Knex(dbConfig[env]);
 const <%= modelName.toLowerCase()%> = require('./model');
 
 
@@ -14,7 +16,6 @@ exports.destroy = destroy;
 
 
 function index(req, res) {
-  var response = [];
   db('<%= modelName.toLowerCase()%>')
     .select('*')
     .then( (response) => {
@@ -23,6 +24,7 @@ function index(req, res) {
     })
     .catch( (error) => {
       console.log('error indexing', error);
+      res.json(error);
     });
 }
 
@@ -41,9 +43,8 @@ function create(req, res, next) {
 
 function show(req, res, next) {
   // add authorization filtering
-  var resourceIdentifier = req.params.id;
   db('<%= modelName.toLowerCase()%>')
-    .where({id: resourceIdentifier})
+    .where({id: req.params.id})
     .select('*')
     .then( (response) => {
       console.log('successful indexing');
@@ -51,12 +52,12 @@ function show(req, res, next) {
     })
     .catch( (error) => {
       console.log('error indexing', error);
+      res.json(error);
     });
 }
 
 function update(req, res, next) {
   // add authorization filtering
-  var resourceIdentifier = req.params.id;
   var updateParams = {};
   var updateable = [];
   for (var ii in updateable) {
@@ -67,7 +68,7 @@ function update(req, res, next) {
   }
 
   db('<%= modelName.toLowerCase()%>')
-    .where({id: resourceIdentifier})
+    .where({id: req.params.id})
     .update(updateParams)
     .then( (response) => {
       res.json(response);
@@ -78,9 +79,8 @@ function update(req, res, next) {
 }
 
 function destroy(req, res) {
-  var resourceIdentifier = req.params.id;
   db('<%= modelName.toLowerCase()%>')
-    .where({id: resourceIdentifier})
+    .where({id: req.params.id})
     .del()
     .then( (response) => {
       res.json(response);

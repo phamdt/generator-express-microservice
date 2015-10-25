@@ -11,24 +11,17 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the RM ' + chalk.red('ExpressMicroservice') + ' generator!'
+      'Welcome to the RM ' + chalk.red('Express Microservice') + ' generator!'
     ));
 
     var prompts = [
       {
         type    : 'input',
-        name    : 'name',
-        message : 'Your project name'
-        // default : this.appname // Default to current folder name
-      },
-      {
-        type    : 'input',
         name    : 'modelName',
-        message : 'your model or action name'
+        message : 'your model name'
       }
     ];
     this.prompt(prompts, function (answers) {
-      this.name = answers.name;
       this.modelName = answers.modelName;
       done();
     }.bind(this));
@@ -37,9 +30,8 @@ module.exports = yeoman.generators.Base.extend({
     buildNames: function() {
 
       this.variables = {
-        microserviceName            : this.name,
-        upperCasedName              : this.name.toUpperCase(),
-        modelName                   : this.modelName
+        modelName                   : this.modelName,
+        properCasedModel            : properCase(this.modelName)
       };
     }
   },
@@ -65,8 +57,10 @@ function prepare(word) {
   if (word.charAt(0) === '_') {
     word = word.substr(1);
   }
-  // else if (word.indexOf('src/') !== -1) {
-  //   word = word.substr(4);
-  // }
   return word;
+}
+
+function properCase(word) {
+  var first = word.toLowerCase().substring(0, 1).toUpperCase();
+  return word.substr(0, 0) + first + word.substr(0 + 1);
 }

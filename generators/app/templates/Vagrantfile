@@ -86,9 +86,9 @@ Vagrant.configure(2) do |config|
     echo "source ~/.nvm/nvm.sh" >> /home/vagrant/.bashrc
     source /home/vagrant/.nvm/nvm.sh
 
-    echo "Installing Node 4.2.x"
+    echo "Installing Node 0.12.7"
 
-    nvm install 4.2
+    nvm install 0.12.7
     chown -R vagrant:vagrant /home/vagrant/.nvm
   SHELL
 end

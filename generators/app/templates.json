@@ -23,6 +23,7 @@
   "migrations/",
 
   "garden/garden.js",
+  "garden/config.json",
   "garden/container.js",
   "garden/features/crud.feature",
   "garden/features/definitions/crud.js",

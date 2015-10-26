@@ -5,6 +5,7 @@
   "Vagrantfile",
   "config.json",
   ".eslintrc",
+  ".jshintrc",
   "editorconfig",
   ".dockerignore",
   "Dockerfile",

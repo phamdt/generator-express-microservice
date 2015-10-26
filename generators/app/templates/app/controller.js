@@ -16,7 +16,7 @@ exports.destroy = destroy;
 
 
 function index(req, res) {
-  db('<%= modelName.toLowerCase()%>')
+  return db('<%= modelName.toLowerCase()%>')
     .select('*')
     .then( (response) => {
       console.log('successful indexing');
@@ -24,7 +24,7 @@ function index(req, res) {
     })
     .catch( (error) => {
       console.log('error indexing', error);
-      res.json(error);
+      res.status(500).end();
     });
 }
 
@@ -38,21 +38,21 @@ function create(req, res, next) {
     })
     .catch( (error) => {
       console.log('error in creation: ', error);
+      res.status(500).end();
     });
 }
 
 function show(req, res, next) {
   // add authorization filtering
-  db('<%= modelName.toLowerCase()%>')
+  return db('<%= modelName.toLowerCase()%>')
     .where({id: req.params.id})
     .select('*')
     .then( (response) => {
-      console.log('successful indexing');
-      res.json(response);
+      console.log('successfully fetched <%= modelName.toLowerCase()%>');
     })
     .catch( (error) => {
       console.log('error indexing', error);
-      res.json(error);
+      res.status(500).end();
     });
 }
 
@@ -67,25 +67,25 @@ function update(req, res, next) {
     }
   }
 
-  db('<%= modelName.toLowerCase()%>')
+  return db('<%= modelName.toLowerCase()%>')
     .where({id: req.params.id})
     .update(updateParams)
     .then( (response) => {
       res.json(response);
     })
     .catch( (error) => {
-      res.json(error);
+      res.status(500).end();
     });
 }
 
 function destroy(req, res) {
-  db('<%= modelName.toLowerCase()%>')
+  return db('<%= modelName.toLowerCase()%>')
     .where({id: req.params.id})
     .del()
     .then( (response) => {
       res.json(response);
     })
     .catch( (error) => {
-      res.json(error);
+      res.status(500).end();
     });
 }

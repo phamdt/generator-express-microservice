@@ -3,9 +3,9 @@
   ".gitignore",
   "README.md",
   "Vagrantfile",
-  "config.json",
+  "_config.json",
   ".eslintrc",
-  ".jshintrc",
+  "jshintrc",
   "editorconfig",
   ".dockerignore",
   "Dockerfile",
@@ -27,7 +27,7 @@
   "garden/container.js",
   "garden/features/crud.feature",
   "garden/features/definitions/crud.js",
-  "garden/support/world.js",
-  "garden/support/context.js",
-  "garden/support/hooks.js"
+  "garden/features/support/world.js",
+  "garden/features/support/context.js",
+  "garden/features/support/hooks.js"
 ]

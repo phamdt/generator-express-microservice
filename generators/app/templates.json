@@ -1,14 +1,20 @@
 [
   "app/module1/middleware/index.js",
-  "app/module1/middleware/middleware1.js",
-  "app/module1/middleware/middleware2.js",
-  "app/module1/controller.js",
+  "app/module1/middleware/module1.middleware1.js",
+  "app/module1/middleware/module1.middleware2.js",
+  "app/module1/module1.controller.js",
+  "app/module1/module1.integration.spec.js",
   "app/module1/index.js",
-  "app/module1/model.js",
+  "app/module1/module1.model.js",
+  "app/module1/module1.model.spec.js",
+
   "app/module2/index.js",
+
   "app/index.js",
   "app/routes.js",
+
   "common/utils.js",
+
   "garden/features/definitions/crud.js",
   "garden/features/crud.feature",
   "garden/features/support/context.js",
@@ -17,6 +23,10 @@
   "garden/config.json",
   "garden/container.js",
   "garden/garden.js",
+
+  "middleware/app.middleware1.js",
+  "middleware/app.middleware2.js",
+  "middleware/index.js",
   "migrations/timestamped_migration.js",
 
   ".dockerignore",

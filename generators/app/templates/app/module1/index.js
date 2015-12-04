@@ -7,7 +7,7 @@
 var express = require('express');
 var router = express.Router();
 
-import * as controller from './controller';
+import * as controller from './module1.controller';
 
 
 router.get('/<%= modelName.toLowerCase() %>s', controller.index);

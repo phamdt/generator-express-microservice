@@ -40,6 +40,7 @@ module.exports = yeoman.generators.Base.extend({
       var self = this;
       for (var ii = 0; ii < templates.length; ii++) {
         var template = templates[ii];
+        console.log('copying ', template);
         self.fs.copyTpl(
           self.templatePath(template),
           self.destinationPath(prepare(template)),

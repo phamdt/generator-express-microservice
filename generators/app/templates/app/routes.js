@@ -1,19 +1,17 @@
 /**
- * <%= properCasedModel %> routes
+ * Main application routes
  */
 
 'use strict';
 
-import * as controller from './controller';
 
+module.exports = function(app) {
 
-function routes(router) {
-  // attach routes to controller methods
-  router.get('/v1/<%= modelName.toLowerCase() %>s', controller.index);
-  router.post('/v1/<%= modelName.toLowerCase() %>s', controller.create);
-  router.get('/v1/<%= modelName.toLowerCase() %>s/:id', controller.show);
-  router.put('/v1/<%= modelName.toLowerCase() %>s/:id', controller.update);
-  router.delete('/v1/<%= modelName.toLowerCase() %>s/:id', controller.destroy);
-}
+  // application level routes
+  app.get('/health', function(req, res, next) { res.end() });
+  app.all('/v1/*', function(req, res, next) { console.log('always happens'); });
 
-module.exports = routes;
+  // module routes
+  app.use('/v1/<%= modelName.toLowerCase() %>s', require('./module1'));
+  app.use('/v1/module2', require('./module2'));
+};

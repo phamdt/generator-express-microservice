@@ -1,0 +1,14 @@
+<%= modelName.toLowerCase() %>_service:
+  env_file: .env.docker
+  command: bash -c "sleep 10; ./node_modules/.bin/knex migrate:latest && npm start"
+  build: .
+  ports:
+    - "3000:3000"
+  links:
+    - <%= modelName.toLowerCase() %>_service_postgres
+<%= modelName.toLowerCase() %>_service_postgres:
+  image: "postgres:9.3"
+  env_file: .env.docker
+  volumes:
+    - ./build:/docker-entrypoint-initdb.d
+

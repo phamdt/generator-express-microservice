@@ -3,16 +3,14 @@
 import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import config from '../config.json';
 
 const env = process.env.NODE_ENV || 'development';
 const app = express();
 
+app.set('port', (process.env.LISTEN_PORT || 3000));
+app.set('hostname', (process.env.LISTEN_HOSTNAME || 'localhost'));
 
-app.set('port', (config.port || 9000));
-app.set('hostname', (config.hostname || 'localhost'));
-
-if (env === 'development' || env === 'qa') {
+if (env === 'development') {
   // turn on request logging
   app.use(morgan('combined'));
 }

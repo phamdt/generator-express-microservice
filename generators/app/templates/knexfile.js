@@ -1,69 +1,21 @@
-// Update with your config settings.
+var config = {}
 
-module.exports = {
-
-  development: {
-    client: 'postgresql',
-    connection: {
-      database: '<%= modelName.toLowerCase()%>_development',
-      user:     '',
-      password: ''
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: '<%= modelName.toLowerCase()%>_migrations'
-    }
+config[process.env.NODE_ENV || 'development'] = {
+  client: 'postgresql',
+  connection: {
+    host: process.env.POSTGRES_HOST,
+    port: 5432,
+    database: process.env.POSTGRES_DATABASE,
+    user:     process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD
   },
-
-  test: {
-    client: 'postgresql',
-    connection: {
-      database: '<%= modelName.toLowerCase()%>_test',
-      user:     '',
-      password: ''
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: '<%= modelName.toLowerCase()%>_migrations'
-    }
+  pool: {
+    min: 2,
+    max: 10
   },
-
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: '<%= modelName.toLowerCase()%>_staging',
-      user:     '',
-      password: ''
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: '<%= modelName.toLowerCase()%>_migrations'
-    }
-  },
-
-  production: {
-    client: 'postgresql',
-    connection: {
-      database: '<%= modelName.toLowerCase()%>_production',
-      user:     '',
-      password: ''
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: '<%= modelName.toLowerCase()%>_migrations'
-    }
+  migrations: {
+    tableName: '<%= modelName.toLowerCase()%>_service_migrations'
   }
-
 };
+
+module.exports = config;

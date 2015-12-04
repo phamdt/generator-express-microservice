@@ -27,4 +27,6 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 .vagrant
-config.json
+.env*
+!.env.sample
+!.env.docker.sample

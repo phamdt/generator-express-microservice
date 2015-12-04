@@ -3,60 +3,52 @@
 import Knex from 'knex';
 import dbConfig from '../knexfile';
 
-const env = process.env.NODE_ENV || 'development';
-const db = Knex.knex = Knex(dbConfig[env]);
+const db = Knex.knex = Knex(dbConfig);
 const <%= modelName.toLowerCase()%> = require('./model');
 
 
-exports.index = index;
-exports.create = create;
-exports.show = show;
-exports.update = update;
-exports.destroy = destroy;
-
-
-function index(req, res) {
+export function index(req, res) {
   return db('<%= modelName.toLowerCase()%>')
     .select('*')
-    .then( (response) => {
+    .then( response => {
       console.log('successful indexing');
       res.json(response);
     })
-    .catch( (error) => {
+    .catch( error => {
       console.log('error indexing', error);
       res.status(500).end();
     });
 }
 
-function create(req, res, next) {
+export function create(req, res, next) {
   // add strong params, validations, etc.
   return db('<%= modelName.toLowerCase()%>')
     .insert(req.params)
-    .then( (insert) => {
+    .then( insert => {
       console.log('successful creation: ', insert);
       res.json(insert);
     })
-    .catch( (error) => {
+    .catch( error => {
       console.log('error in creation: ', error);
       res.status(500).end();
     });
 }
 
-function show(req, res, next) {
+export function show(req, res, next) {
   // add authorization filtering
   return db('<%= modelName.toLowerCase()%>')
     .where({id: req.params.id})
     .select('*')
-    .then( (response) => {
+    .then( response => {
       console.log('successfully fetched <%= modelName.toLowerCase()%>');
     })
-    .catch( (error) => {
+    .catch( error => {
       console.log('error indexing', error);
       res.status(500).end();
     });
 }
 
-function update(req, res, next) {
+export function update(req, res, next) {
   // add authorization filtering
   var updateParams = {};
   var updateable = [];
@@ -70,22 +62,22 @@ function update(req, res, next) {
   return db('<%= modelName.toLowerCase()%>')
     .where({id: req.params.id})
     .update(updateParams)
-    .then( (response) => {
+    .then( response => {
       res.json(response);
     })
-    .catch( (error) => {
+    .catch( error => {
       res.status(500).end();
     });
 }
 
-function destroy(req, res) {
+export function destroy(req, res) {
   return db('<%= modelName.toLowerCase()%>')
     .where({id: req.params.id})
     .del()
-    .then( (response) => {
+    .then( response => {
       res.json(response);
     })
-    .catch( (error) => {
+    .catch( error => {
       res.status(500).end();
     });
 }

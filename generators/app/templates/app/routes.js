@@ -4,7 +4,7 @@
 
 'use strict';
 
-import controller from './controller';
+import * as controller from './controller';
 
 
 function routes(router) {

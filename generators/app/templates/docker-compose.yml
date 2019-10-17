@@ -2,6 +2,7 @@
   env_file: .env.docker
   command: bash -c "sleep 10; ./node_modules/.bin/knex migrate:latest && npm start"
   build: .
+  restart: always
   ports:
     - "3000:3000"
   links:

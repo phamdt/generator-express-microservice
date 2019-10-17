@@ -1,9 +1,5 @@
 'use strict';
 
-import Knex from 'knex';
-import dbConfig from '../../knexfile';
-
-const db = Knex.knex = Knex(dbConfig);
 const <%= modelName.toLowerCase()%> = require('./module1.model');
 
 

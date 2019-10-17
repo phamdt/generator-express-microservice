@@ -7,14 +7,14 @@
 var express = require('express');
 var router = express.Router();
 
-import * as controller from './module1.controller';
+import * as controller from './<%= modelName.toLowerCase() %>s.controller';
 
 
-router.get('/<%= modelName.toLowerCase() %>s', controller.index);
-router.post('/<%= modelName.toLowerCase() %>s', controller.create);
-router.get('/<%= modelName.toLowerCase() %>s/:id', controller.show);
-router.put('/<%= modelName.toLowerCase() %>s/:id', controller.update);
-router.delete('/<%= modelName.toLowerCase() %>s/:id', controller.destroy);
+router.get('/', controller.index);
+router.post('/', controller.create);
+router.get('/:id', controller.show);
+router.put('/:id', controller.update);
+router.delete('/:id', controller.destroy);
 
 
 module.exports = router;

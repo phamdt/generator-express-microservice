@@ -6,10 +6,7 @@
 // index.js also allows for separation of es5 from es6 code
 
 // es6 transpiler
-require('babel/register');
-
-// loads dotenv variables into process
-require('./environment');
+require('babel-register');
 
 // keep app index requirement last
 require('./app/index');

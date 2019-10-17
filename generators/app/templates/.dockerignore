@@ -1,4 +1,0 @@
-Vagrantfile
-.env
-node_modules
-!node_modules/ran-token-parser
